@@ -13,6 +13,9 @@
 # - TailwindCSS: 4.0.0	#
 # ---------------------	#
 
+# "Strict Mode"
+set -euo pipefail
+
 # Current Directory Variable
 DIR="${1:-.}"
 
@@ -80,10 +83,10 @@ This project was automatically generated using a custom Bash script, ensuring a 
 
 To start development, run:
 
-```bash
+\`\`\`bash
 npm install
 npm run dev
-```
+\`\`\`
 
 ## 🛠 About This Setup
 
