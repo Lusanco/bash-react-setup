@@ -1,7 +1,17 @@
 #!/bin/bash
 
-# TailwindCSS v4.0 Auto Install
-# Vite: React | TypeScript
+# ---------------------	#
+# Script:		#
+# ---------------------	#
+# - vite-react-ts-tw.sh	#
+# ---------------------	#
+# Dependencies:		#
+# --------------------- #
+# - Vite: 6.0.5		#
+# - React: 18.3.1	#
+# - TypeScript: 5.6.2	#
+# - TailwindCSS: 4.0.0	#
+# ---------------------	#
 
 # Current Directory Variable
 DIR="${1:-.}"
