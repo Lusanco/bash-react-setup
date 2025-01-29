@@ -46,12 +46,12 @@ EOF
 # Making Sure Directory  Exists
 mkdir -p src
 
-# Import Tailwind CSS
+# Update Styles: src/App.css
 cat > src/App.css <<EOF
 @import "tailwindcss";
 EOF
 
-# Tailwind CSS Test Template
+# Update Template: src/App.tsx
 cat > src/App.tsx <<EOF
 import "./App.css";
 
@@ -64,6 +64,39 @@ function App() {
 }
 
 export default App;
+EOF
+
+# Update Main: src/main.tsx
+cat > src/main.tsx <<EOF
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+EOF
+
+# Delete Styles: src/index.css
+rm src/index.css
+
+# Update Template: index.html
+cat > index.html <<EOF
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bash_Vite_React_TS_TW</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
 EOF
 
 # Update README.md
