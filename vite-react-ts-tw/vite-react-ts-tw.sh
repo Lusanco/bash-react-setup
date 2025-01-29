@@ -25,7 +25,16 @@ mkdir -p "$DIR"
 # Navigate to the Provided Directory
 cd "$DIR" || { echo "Failed to navigate to directory:" $DIR; exit 1; }
 
+# Empty Directory (and sub-directories)
+printf "\nEmptying the directory...\n"
+rm -rf ./* ./.{git,github,gitignore} 2>/dev/null || true
+
 # Install Vite
+printf "\nInstalling:\n 
+	Vite\n
+	React\n
+	TypeScript\n
+	TailwindCSS\n"
 npm create vite@latest . -- --template react-ts
 
 # Install Tailwind CSS
@@ -124,6 +133,10 @@ npm run dev
 ## 🛠 About This Setup
 
 This setup was created using an automated script to save time and provide a ready-to-use development environment.
-
-<!-- Want to use this script for your own projects? Check it out here. -->
 EOF
+
+# npm install instruction
+npm install
+
+# npm run dev instruction
+npm run dev
