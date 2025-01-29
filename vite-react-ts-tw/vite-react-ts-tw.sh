@@ -30,12 +30,13 @@ printf "\nEmptying the directory...\n"
 rm -rf ./* ./.{git,github,gitignore,vite,vscode} 2>/dev/null || true
 
 # Install Vite
-printf "\nInstalling:\n 
-	Vite\n
-	React\n
-	TypeScript\n
+printf "\nInstalling:\n
+	Vite
+	React
+	TypeScript
 	TailwindCSS\n"
 npm create vite@latest . -- --template react-ts
+printf "These commands are set to autorun as last instruction\n"
 
 # Install Tailwind CSS
 npm install tailwindcss @tailwindcss/vite
@@ -67,7 +68,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1 className="text-5xl font-extrabold underline bg-green-500">Tailwind Setup w/Bash Script</h1>
+      <h1 className="text-2xl font-bold text-slate-700">If you can see this <spam className="text-green-700 font-extrabold text-4xl underline">text</spam> green and styled, TailwindCSS is setup correctly.</h1>
     </>
   );
 }
