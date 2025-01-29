@@ -27,7 +27,7 @@ cd "$DIR" || { echo "Failed to navigate to directory:" $DIR; exit 1; }
 
 # Empty Directory (and sub-directories)
 printf "\nEmptying the directory...\n"
-rm -rf ./* ./.{git,github,gitignore} 2>/dev/null || true
+rm -rf ./* ./.{git,github,gitignore,vite,vscode} 2>/dev/null || true
 
 # Install Vite
 printf "\nInstalling:\n 
