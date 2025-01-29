@@ -62,3 +62,32 @@ function App() {
 
 export default App;
 EOF
+
+# Update README.md
+cat > README.md <<EOF
+# ⚡ Vite + React + TypeScript + TailwindCSS
+
+## 🚀 Project Setup
+
+This project was automatically generated using a custom Bash script, ensuring a fully configured environment with:
+
+- ✅ Vite – Fast build tool
+- ✅ React – UI library
+- ✅ TypeScript – Strongly typed JavaScript
+- ✅ TailwindCSS – Utility-first CSS framework
+
+## 📌 Getting Started
+
+To start development, run:
+
+```bash
+npm install
+npm run dev
+```
+
+## 🛠 About This Setup
+
+This setup was created using an automated script to save time and provide a ready-to-use development environment.
+
+<!-- Want to use this script for your own projects? Check it out here. -->
+EOF
