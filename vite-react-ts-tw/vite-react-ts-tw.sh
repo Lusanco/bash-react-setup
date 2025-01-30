@@ -11,6 +11,7 @@
 # - React: 18.3.1	#
 # - TypeScript: 5.6.2	#
 # - TailwindCSS: 4.0.0	#
+# - TW-Motion: 1.0.1	#
 # ---------------------	#
 
 # "Strict Mode"
@@ -33,23 +34,28 @@ printf "Emptying Directory...\n"
 rm -rf ./* ./.{git,github,gitignore,vite,vscode} 2>/dev/null || true
 
 # Install Vite
-printf "\nInstalling:\n
-	Vite
-	React
-	TypeScript\n"
+printf "\nInstalling:
+
+  Vite
+  React
+  TypeScript\n"
 npm create vite@latest . -- --template react-ts
-printf "Ignoring npm install && npm run dev commands...\n"
+printf "Ignoring:
+
+  npm install
+  npm run dev\n\n"
 
 # Install Tailwind CSS
-# Install Rombo | Animation Library
-printf "Installing:\n
-	TailwindCSS
-	Rombo | Animation Library\n"
+# Install Rombo | Animation Library (TailwindCSS Motion)
+printf "Installing:
+
+  TailwindCSS
+  Rombo (TailwindCSS Motion)\n"
 npm install tailwindcss @tailwindcss/vite
 npm i -D tailwindcss-motion
 
 # Configure the Vite plugin
-printf "\nConfiguring Vite Plugin...\n"
+printf "\nUpdating Configuration...\n"
 cat > vite.config.ts <<EOF
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -124,7 +130,7 @@ cat > index.html <<EOF
 EOF
 
 # Update README.md
-printf "Updating Readme file...\n"
+printf "Updating Readme...\n"
 cat > README.md <<EOF
 # ⚡ Vite + React + TypeScript + TailwindCSS
 
@@ -152,12 +158,13 @@ This setup was created using an automated script to save time and provide a read
 EOF
 
 # npm install instruction
-printf "Installing packages...\n"
+printf "Updating Packages...\n"
 npm install
 
 # npm run dev instruction"
 # npm run dev
 
 printf "\nFinishing Setup...\n
-	To run the project:
-	npm run dev\n"
+Done. Now run:
+
+  npm run dev\n\n"
