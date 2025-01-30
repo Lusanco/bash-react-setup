@@ -1,18 +1,24 @@
 #!/bin/bash
 
-# ---------------------	#
-# Script:		#
-# ---------------------	#
-# - vite-react-ts-tw.sh	#
-# ---------------------	#
-# Dependencies:		#
-# --------------------- #
-# - Vite: 6.0.5		#
-# - React: 18.3.1	#
-# - TypeScript: 5.6.2	#
-# - TailwindCSS: 4.0.0	#
-# - TW-Motion: 1.0.1	#
-# ---------------------	#
+# -----------------------------	#
+# Script:			#
+# -----------------------------	#
+# react-typescript.sh		#
+# -----------------------------	#
+# Dependencies:			#
+# -----------------------------	#
+# node: 22.12.0			#
+# vite: 6.0.5			#
+# react: 18.3.1			#
+# react-router: 7.1.3		#
+# @types/react-router: 5.1.20	#
+# typescript: 5.6.2		#
+# tailwindcss: 4.0.0		#
+# @tailwindcss/vite: 4.0.1	#
+# tailwindcss-motion: 1.0.1	#
+# axios: 1.7.9			#
+# @types/axios: 0.9.36		#
+# -----------------------------	#
 
 # "Strict Mode"
 set -euo pipefail
@@ -46,13 +52,23 @@ printf "Ignoring:
   npm run dev\n\n"
 
 # Install Tailwind CSS
-# Install Rombo | Animation Library (TailwindCSS Motion)
+# Install Rombo (TailwindCSS Motion)
+# Install Axios w/Type Definitions
+# Install React Router w/Type Definitions
 printf "Installing:
 
   TailwindCSS
-  Rombo (TailwindCSS Motion)\n"
+  Rombo (TailwindCSS Motion)
+  Axios w/Type Definitions
+  React Router w/Type Definitions
+  Redux Toolkit w/Type Definitions\n"
 npm install tailwindcss @tailwindcss/vite
 npm i -D tailwindcss-motion
+npm install axios
+npm install @types/axios
+npm i react-router
+npm install @types/react-router
+npm install @reduxjs/toolkit
 
 # Configure the Vite plugin
 printf "\nUpdating Configuration...\n"
@@ -98,11 +114,16 @@ printf "Updating Main...\n"
 cat > src/main.tsx <<EOF
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>
 );
 EOF
@@ -161,9 +182,7 @@ EOF
 printf "Updating Packages...\n"
 npm install
 
-# npm run dev instruction"
-# npm run dev
-
+# Finishing Setup
 printf "\nFinishing Setup...\n
 Done. Now run:
 
