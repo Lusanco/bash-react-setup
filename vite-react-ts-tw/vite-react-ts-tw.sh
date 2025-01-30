@@ -19,29 +19,37 @@ set -euo pipefail
 # Current Directory Variable
 DIR="${1:-.}"
 
+printf "\nDirectory Setup: $DIR\n"
 # Create Directory If Not Exists
+printf "\nCreating Directory...\n"
 mkdir -p "$DIR"
 
 # Navigate to the Provided Directory
-cd "$DIR" || { echo "Failed to navigate to directory:" $DIR; exit 1; }
+printf "Navigating Directory...\n"
+cd "$DIR" || { echo "Failed Navigating Directory...\n"; exit 1; }
 
 # Empty Directory (and sub-directories)
-printf "\nEmptying the directory...\n"
+printf "Emptying Directory...\n"
 rm -rf ./* ./.{git,github,gitignore,vite,vscode} 2>/dev/null || true
 
 # Install Vite
 printf "\nInstalling:\n
 	Vite
 	React
-	TypeScript
-	TailwindCSS\n"
+	TypeScript\n"
 npm create vite@latest . -- --template react-ts
-printf "These commands are set to autorun as last instruction\n"
+printf "Ignoring npm install && npm run dev commands...\n"
 
 # Install Tailwind CSS
+# Install Rombo | Animation Library
+printf "Installing:\n
+	TailwindCSS
+	Rombo | Animation Library\n"
 npm install tailwindcss @tailwindcss/vite
+npm i -D tailwindcss-motion
 
 # Configure the Vite plugin
+printf "\nConfiguring Vite Plugin...\n"
 cat > vite.config.ts <<EOF
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -57,18 +65,21 @@ EOF
 mkdir -p src
 
 # Update Styles: src/App.css
+printf "Updating Styles...\n"
 cat > src/App.css <<EOF
 @import "tailwindcss";
+@plugin "tailwindcss-motion";
 EOF
 
 # Update Template: src/App.tsx
+printf "Updating Template...\n"
 cat > src/App.tsx <<EOF
 import "./App.css";
 
 function App() {
   return (
     <>
-      <h1 className="text-2xl font-bold text-slate-700">If you can see this <spam className="text-green-700 font-extrabold text-4xl underline">text</spam> green and styled, TailwindCSS is setup correctly.</h1>
+      <h1 className="text-2xl font-bold text-slate-700">If you can see this <span className="text-green-700 font-extrabold text-4xl underline">text</span> green and styled, TailwindCSS is setup correctly.</h1>
     </>
   );
 }
@@ -77,6 +88,7 @@ export default App;
 EOF
 
 # Update Main: src/main.tsx
+printf "Updating Main...\n"
 cat > src/main.tsx <<EOF
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -90,9 +102,11 @@ createRoot(document.getElementById("root")!).render(
 EOF
 
 # Delete Styles: src/index.css
+printf "Cleaning Files...\n"
 rm src/index.css
 
 # Update Template: index.html
+printf "Updating Template...\n"
 cat > index.html <<EOF
 <!DOCTYPE html>
 <html lang="en">
@@ -110,6 +124,7 @@ cat > index.html <<EOF
 EOF
 
 # Update README.md
+printf "Updating Readme file...\n"
 cat > README.md <<EOF
 # ⚡ Vite + React + TypeScript + TailwindCSS
 
@@ -137,7 +152,12 @@ This setup was created using an automated script to save time and provide a read
 EOF
 
 # npm install instruction
+printf "Installing packages...\n"
 npm install
 
-# npm run dev instruction
-npm run dev
+# npm run dev instruction"
+# npm run dev
+
+printf "\nFinishing Setup...\n
+	To run the project:
+	npm run dev\n"
