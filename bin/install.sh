@@ -1,6 +1,6 @@
 #!/bin/bash
 # bash 'strict' mode
-set -euo pipefall
+set -euo pipefail
 
 echo -e "\nInstalling dependencies..."
 
