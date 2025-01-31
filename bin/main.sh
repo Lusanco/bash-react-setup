@@ -1,6 +1,6 @@
 #!/bin/bash
 # bash 'strict' mode
-set --euo pipefall
+set --euo pipefail
 
 # Load utility functions
 source "$(dirname "$0")/../utils/validate_directory.sh"
