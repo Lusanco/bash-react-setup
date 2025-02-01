@@ -1,67 +1,27 @@
 #!/bin/bash
 
-# -----------------------------	#
-# Script:			#
-# -----------------------------	#
-# react-typescript.sh		#
-# -----------------------------	#
-# Dependencies:			#
-# -----------------------------	#
-# node: 22.12.0			#
-# vite: 6.0.5			#
-# react: 18.3.1			#
-# react-router: 7.1.3		#
-# @types/react-router: 5.1.20	#
-# typescript: 5.6.2		#
-# tailwindcss: 4.0.0		#
-# @tailwindcss/vite: 4.0.1	#
-# tailwindcss-motion: 1.0.1	#
-# axios: 1.7.9			#
-# @types/axios: 0.9.36		#
-# -----------------------------	#
-
-# "Strict Mode"
-set -euo pipefail
-
-# Current Directory Variable
-DIR="${1:-.}"
+set -euo pipefail # Bash "Strict Mode"
+DIR="${1:-.}" # Current Directory Variable
 
 printf "\nDirectory Setup: $DIR\n"
-# Create Directory If Not Exists
 printf "\nCreating Directory...\n"
-mkdir -p "$DIR"
 
-# Navigate to the Provided Directory
-printf "Navigating Directory...\n"
+mkdir -p "$DIR" # Create Directory If Not Exists
+
+printf "Navigating Directory...\n" # Navigate To Provided Directory
 cd "$DIR" || { echo "Failed Navigating Directory...\n"; exit 1; }
 
-# Empty Directory (and sub-directories)
-printf "Emptying Directory...\n"
+printf "Emptying Directory...\n" # Empty Directory
 rm -rf ./* ./.{git,github,gitignore,vite,vscode} 2>/dev/null || true
 
-# Install Vite
-printf "\nInstalling:
+printf "\nInstalling:\n\n  Vite\n  React\n  TypeScript\n"
+npm create vite@latest . -- --template react-ts # Install Vite
 
-  Vite
-  React
-  TypeScript\n"
-npm create vite@latest . -- --template react-ts
-printf "Ignoring:
+printf "Ignoring:\n\n  npm install\n  npm run dev\n\n"
 
-  npm install
-  npm run dev\n\n"
-
-# Install Tailwind CSS
-# Install Rombo (TailwindCSS Motion)
-# Install Axios w/Type Definitions
-# Install React Router w/Type Definitions
-printf "Installing:
-
-  TailwindCSS
-  Rombo (TailwindCSS Motion)
-  Axios w/Type Definitions
-  React Router w/Type Definitions
-  Redux Toolkit w/Type Definitions\n"
+# Install TailwindCSS, TailwindCSS Motion, Axios, React Router
+printf "Installing:\n\n  TailwindCSS\n  TailwindCSS Motion
+  Axios\n  React Router\n  Redux\n"
 npm install tailwindcss @tailwindcss/vite
 npm i -D tailwindcss-motion
 npm install axios
@@ -70,8 +30,8 @@ npm i react-router
 npm install @types/react-router
 npm install @reduxjs/toolkit
 
-# Configure the Vite plugin
 printf "\nUpdating Configuration...\n"
+# Update Vite Config
 cat > vite.config.ts <<EOF
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
