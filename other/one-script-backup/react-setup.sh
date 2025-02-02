@@ -12,7 +12,7 @@ printf "Navigating Directory...\n" # Navigate To Provided Directory
 cd "$DIR" || { echo "Failed Navigating Directory...\n"; exit 1; }
 
 printf "Emptying Directory...\n" # Empty Directory
-rm -rf ./* ./.{git,github,gitignore,vite,vscode} 2>/dev/null || true
+rm -rf ./* ./.{github,gitignore,vite,vscode} 2>/dev/null || true
 
 printf "\nInstalling:\n\n  Vite\n  React\n  TypeScript\n"
 npm create vite@latest . -- --template react-ts # Install Vite
