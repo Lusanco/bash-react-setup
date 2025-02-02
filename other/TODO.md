@@ -45,6 +45,8 @@
   - TypeScript
 - FastAPI
   - Python
+- Flask
+  - Python
 - Low level: Zig
 - NLP
 - C# AI
