@@ -4,10 +4,7 @@ set -euo pipefail
 install() {
   echo -e "\nInstalling dependencies...\n"
 
-  # Create Vite project
   npm create vite@latest . -- --template react-ts
-
-  # Install all required dependencies
   npm install tailwindcss @tailwindcss/vite
   npm install -D tailwindcss-motion
   npm install axios @types/axios
